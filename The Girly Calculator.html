@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="Girly calculator">
+    <div class="screen">
+      <input type="text" id="result" disabled>
+    </div>
+    <div class="keys">
+      <button onclick="insertNumber('7')">7</button>
+      <button onclick="insertNumber('8')">8</button>
+      <button onclick="insertNumber('9')">9</button>
+      <button class="operator" onclick="insertOperator('/')">/</button>
+      <button onclick="insertNumber('4')">4</button>
+      <button onclick="insertNumber('5')">5</button>
+      <button onclick="insertNumber('6')">6</button>
+      <button class="operator" onclick="insertOperator('*')">*</button>
+      <button onclick="insertNumber('1')">1</button>
+      <button onclick="insertNumber('2')">2</button>
+      <button onclick="insertNumber('3')">3</button>
+      <button class="operator" onclick="insertOperator('-')">-</button>
+      <button onclick="insertNumber('0')">0</button>
+      <button onclick="insertNumber('.')">.</button>
+      <button class="equal" onclick="calculate()">=</button>
+      <button class="operator" onclick="insertOperator('+')">+</button>
+      <button class="clear" onclick="clearScreen()">C</button>
+      </div>
+      </div>
+      <style>
+        .calculator {
+          margin: auto;
+          width: 240px;
+          background-color: pink;
+          padding: 10px;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+      
+        .screen {
+          background-color: white;
+          border-radius: 5px;
+          margin-bottom: 10px;
+          font-size: large;
+          overflow: hidden;
+          text-align: center;
+        }
+      
+        #result {
+          width: 100%;
+          border: none;
+          font-size: 25px;
+          padding: 10px;
+  text-align: right;
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+}
+
+button {
+  width: 100%;
+  height: 80px;
+  font-size: 34px;
+  border: none;
+  border-radius: 5px;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+}
+button.operator {
+  background-color: #ff5555;
+}
+
+button.equal {
+  background-color: #55ff55;
+}
+
+button.clear {
+  background-color: #5555ff;
+}
+
+  </style>
+    <script src="script.js"></script>
+    <script>
+    let screen = document.getElementById("result");
+    let expression = "";
+
+    function insertNumber(number) {
+      expression += number;
+      screen.value = expression;
+    }
+     function insertOperator(operator) {
+        if (expression.length > 0 && !isNaN(expression[expression.length - 1])) {
+          expression += operator;
+          screen.value = expression;
+        }
+      }
+
+      function calculate() {
+        if (expression.length > 0 && !isNaN(expression[expression.length - 1])) {
+          let result = eval(expression);
+          expression = result.toString();
+          screen.value = expression;
+        }
+      }
+
+      function clearScreen() {
+        expression = "";
+        screen.value = "";
+      }
+      </script>
+      </body>
+      
+      </html>
